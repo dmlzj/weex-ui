@@ -4,6 +4,8 @@
 
 <template>
   <div class="wxc-page-calendar" ref="pageCalendar" :style="calendarExtendStyle">
+    <!--顶部占位-->
+    <div class="status-bar" :style="{'height': statusBarHeight}"></div>
     <wxc-minibar :show="showTitle"
                  v-bind="minibarCfg"
                  :use-default-return="false"
@@ -104,6 +106,7 @@
       },
     },
     data: () => ({
+      statusBarHeight: weex.config.eros.statusBarHeight ? weex.config.eros.statusBarHeight : 40,
       isShow: false,
       reSelect: true,
       today: Format.getToDay(),
