@@ -34,7 +34,7 @@
 <style scoped>
   .wxc-minibar {
     width: 750px;
-    height: 90px;
+    height: 70px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -60,8 +60,8 @@
   }
 
   .left-button {
-    width: 21px;
-    height: 36px;
+    width: 18px;
+    height: 32px;
   }
 
   .right-button {
