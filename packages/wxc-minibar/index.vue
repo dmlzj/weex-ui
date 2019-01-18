@@ -34,7 +34,7 @@
 <style scoped>
   .wxc-minibar {
     width: 750px;
-    height: 70px;
+    height: 90px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -44,13 +44,18 @@
   .left {
     width: 180px;
     padding-left: 32px;
+    height: 90px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .middle-title {
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: bold;
     color: #ffffff;
     height: 36px;
-    line-height: 34px;
+    line-height: 36px;
   }
 
   .right {
@@ -60,8 +65,8 @@
   }
 
   .left-button {
-    width: 18px;
-    height: 32px;
+    width: 21px;
+    height: 36px;
   }
 
   .right-button {
