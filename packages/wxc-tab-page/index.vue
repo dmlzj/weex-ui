@@ -66,6 +66,8 @@
         justify-content: center;
         align-items: center;
         border-bottom-style: solid;
+        border-bottom-color: #f5f5f5;
+        border-bottom-width: 1px;
     }
 
     .border-bottom {
