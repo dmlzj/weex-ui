@@ -38,7 +38,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #009ff0;
+    background-color: #ffffff;
   }
 
   .left {
