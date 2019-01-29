@@ -16,7 +16,7 @@
                  v-for="(v,index) in tabTitles"
                  :key="index"
                  :ref="'wxc-tab-title-'+index"
-                 @click="setPage(index,v.url)"
+                 @click="setPage(index,1, false)"
                  :style="{ width: tabStyles.width +'px', height: tabStyles.height +'px', backgroundColor: currentPage === index ? tabStyles.activeBgColor : tabStyles.bgColor }"
                  :accessible="true"
                  :aria-label="`${v.title?v.title:'标签'+index}`">
@@ -206,14 +206,14 @@
                 if (page < this.tabTitles.length - 1) {
                     page++;
                 }
-                this.setPage(page);
+                this.setPage(page, 1);
             },
             prev() {
                 let page = this.currentPage;
                 if (page > 0) {
                     page--;
                 }
-                this.setPage(page);
+                this.setPage(page, 1);
             },
             startHandler() {
                 if (BindEnv.supportsEBForIos() && this.isTabView && this.needSlider) {
@@ -255,7 +255,7 @@
                             } else if (deltaX > panDist) {
                                 this.prev();
                             } else {
-                                this.setPage(currentPage);
+                                this.setPage(currentPage, 1);
                             }
                         }
                     });
@@ -270,6 +270,7 @@
                 if (this.isMoving === true) {
                     return;
                 }
+                let titleAnimated = url === 1 ? true : false
                 this.isMoving = true;
                 const previousPage = this.currentPage;
                 const currentTabEl = this.$refs[`wxc-tab-title-${page}`][0];
@@ -278,16 +279,16 @@
                 const tabsNum = this.tabTitles.length;
                 const offset = page > appearNum ? -(750 - width) / 2 : -width * 2;
 
-                if (appearNum < tabsNum) {
-                    (previousPage > appearNum || page > 1) && dom.scrollToElement(currentTabEl, {
-                        offset, animated
-                    });
+                // if (appearNum < tabsNum) {
+                (previousPage > appearNum || page > 1) && dom.scrollToElement(currentTabEl, {
+                    offset, animated: titleAnimated
+                });
 
-                    page <= 1 && previousPage > page && dom.scrollToElement(currentTabEl, {
-                        offset: -width * page,
-                        animated
-                    });
-                }
+                page <= 1 && previousPage > page && dom.scrollToElement(currentTabEl, {
+                    offset: -width * page,
+                    animated: titleAnimated
+                });
+                // }
 
                 this.isMoving = false;
                 this.currentPage = page;
